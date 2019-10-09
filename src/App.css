@@ -1,23 +1,34 @@
 .App {
   text-align: center;
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 100px 1fr;
 }
 
-.App__header a {
-  color: #09d3ac;
-  text-decoration: none;
-  color: white;
-}
 
 .App__header {
+  grid-area: header;
   background-color: #282c34;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
 
+.App__header a {
+  text-decoration: none;
+  color: white;
+}
+
 .App__navigation {
-  border: 2px solid red;
+  grid-area: sidebar;
+  height: 100vh;
+  background-color: darkslategray;
+}
+
+.App__main {
+  grid-area: main;
 }

@@ -1,9 +1,8 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import STORE from './dummy-store'
 import './App.css';
 
-import Header from './Header/header'
 import FolderList from './FolderList/folderList'
 import Main from './Main/main'
 
@@ -16,7 +15,11 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <Header />
+        <header className="App__header">
+          <h1>
+            <Link to='/' className="Header__Link">Noteful</Link>
+          </h1>
+        </header>
         <nav className="App__navigation">
           <FolderList folders={this.state.folders} />
         </nav>
