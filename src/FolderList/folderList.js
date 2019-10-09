@@ -7,7 +7,7 @@ class FolderList extends React.Component {
 
     render() {
         const folderList = STORE.folders.map( folder => 
-            <li key={folder.id}>
+            <li className="FolderList__item" key={folder.id}>
                 <Link to={`/folder/${folder.id}`}>
                     {folder.name}
                 </Link>

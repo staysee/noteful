@@ -1,0 +1,22 @@
+.FolderList__list {
+    padding-left: 0;
+    margin-top: 100px;
+}
+.FolderList__item {
+    list-style: none;
+    border: 1px solid white;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.FolderList__item a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.FolderList__item a:hover {
+    color: yellow;
+}
