@@ -8,16 +8,16 @@ import Note from '../Note/note'
 class Main extends React.Component {
     render() {
         const allNotes = STORE.notes.map(note =>
-                <li key={note.id}>
+                <li className="Main__item" key={note.id}>
                     <Link to={`/note/${note.id}`}>
-                        {note.name}
+                        <Note id={note.id} {...note}/>
                     </Link>
                 </li>
 
             );
         return(
             <div className="Main">
-                <ul>
+                <ul className="Main__list">
                     {allNotes}
                 </ul>
 

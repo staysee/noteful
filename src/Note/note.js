@@ -1,13 +1,18 @@
 import React from 'react'
+import STORE from '../dummy-store'
 
 function Note(props){
+    const note = STORE.notes.find(n =>
+        n.id === props.match.params.noteId
+        )
     return (
         <div className="Note">
-            <h2>{props.name}</h2>
+            <h2>{note.name}</h2>
             <div className="Note__date-modified">
-                Modified on {props.modified}
+                Modified on {note.modified}
             </div>
-            <p>Content: {props.content}</p>
+            {/* <p>Content: {props.content}</p> */}
+            {/* {console.log(props)} */}
             <button>Delete Note</button>
         </div>
     )
