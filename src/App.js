@@ -1,27 +1,41 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
 import STORE from './dummy-store'
 import './App.css';
 
-import Header from './Header/header'
 import FolderList from './FolderList/folderList'
 import Main from './Main/main'
+import Note from './Note/note'
 
 class App extends React.Component {
-  state = {
-    folders: STORE.folders,
-    notes: STORE.notes
-  }
+  // state = {
+  //   folders: STORE.folders,
+  //   notes: STORE.notes
+  // }
 
   render(){
     return (
       <div className="App">
-        <Header />
+        <header>
+          <h1>
+            <Link to="/">Noteful</Link>
+          </h1>
+        </header>
         <nav className="App__navigation">
-          <FolderList folders={this.state.folders} />
+          <Switch>
+            <Route exact path='/' component={FolderList} />
+            <Route path='/folder/:folderId' component={FolderList} />
+            <Route path='/note/:noteId' component={FolderList} />
+          </Switch>
         </nav>
+
         <main className="App__main">
-          <Main notes={this.state.notes} />
+          <Switch>
+            <Route exact path='/' component={Main} />
+            <Route path='/folder/:folderId' component={Main} />
+            <Route path='/note/:noteId' component={Note} />
+          </Switch>
+
         </main>
         
       </div>

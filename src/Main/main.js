@@ -1,11 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import STORE from '../dummy-store'
 import './main.css'
+
+import Note from '../Note/note'
 
 class Main extends React.Component {
     render() {
-        const allNotes = this.props.notes.map(note =>
+        const allNotes = STORE.notes.map(note =>
                 <li key={note.id}>
-                    {note.name}
+                    <Link to={`/note/${note.id}`}>
+                        {note.name}
+                    </Link>
                 </li>
 
             );
