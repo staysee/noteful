@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom'
-import STORE from './dummy-store'
+import { Link, Route, Switch } from 'react-router-dom'
 import './App.css';
 
 import FolderList from './FolderList/folderList'
 import Main from './Main/main'
+import Note from './Note/note'
 
 class App extends React.Component {
-  state = {
-    folders: STORE.folders,
-    notes: STORE.notes
-  }
+  // state = {
+  //   folders: STORE.folders,
+  //   notes: STORE.notes
+  // }
 
   render(){
     return (
@@ -21,10 +21,20 @@ class App extends React.Component {
           </h1>
         </header>
         <nav className="App__navigation">
-          <FolderList folders={this.state.folders} />
+          <Switch>
+            <Route exact path='/' component={FolderList} />
+            <Route path='/folder/:folderId' component={FolderList} />
+            <Route path='/note/:noteId' component={FolderList} />
+          </Switch>
         </nav>
+
         <main className="App__main">
-          <Main notes={this.state.notes} />
+          <Switch>
+            <Route exact path='/' component={Main} />
+            <Route path='/folder/:folderId' component={Main} />
+            <Route path='/note/:noteId' component={Note} />
+          </Switch>
+
         </main>
         
       </div>
