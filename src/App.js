@@ -50,6 +50,7 @@ class App extends React.Component {
         <main className="App__main">
           <Route exact path="/" 
               render={ (routerProps) => {
+                console.log(routerProps)
                 return <Main notes={notes} {...routerProps} />} 
               }
           />
@@ -63,7 +64,7 @@ class App extends React.Component {
                 notesInFolder = notes.filter( note => note.folderId === routerProps.match.params.folderId)
               }
 
-              return <Main notesInFolder={notesInFolder} {...routerProps} />
+              return <Main notes={notesInFolder} {...routerProps} />
             }}
           />
         </main>

@@ -6,7 +6,7 @@ function Main(props){
         return(
             <div className="Main">
                 <ul className="Main__list">
-                    {props.notesInFolder.map( note =>
+                    {props.notes.map( note =>
                         <li key={note.id}>
                             <Note id={note.id} {...note} />
                         </li>
