@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Route} from 'react-router-dom'
 import FolderList from './FolderList/FolderList'
+import FolderName from './FolderName/FolderName'
 import Main from './Main/Main'
 import DUMMYSTORE from './dummy-store'
 import NotePage from './NotePage/NotePage'
@@ -28,18 +29,43 @@ class App extends React.Component {
         </header>
 
         <section className="App__navigation">
-			<Route exact path="/" render={ () =>
-				<FolderList folders={folders} />
-			} />
-			<Route exact path="/folders/:dolferId" render={ () =>
-				<FolderList folders={folders} />
-			} />
+          <Route exact path="/" 
+            render={ (routerProps) => 
+            <FolderList folders={folders} {...routerProps} />} 
+          />
+          <Route exact path="/folder/:folderId"
+            render={ (routerProps) => 
+              <FolderList folders={folders} {...routerProps} />} 
+          />
+
+          <Route path="/note/:noteId"
+            render={ (routerProps) => {
+              const note = notes.find(note => note.id === routerProps.match.params.noteId);
+              const folder = folders.find(folder => folder.id === note.folderId);
+              return <FolderName folder={folder} {...routerProps} />
+            }}
+          />
         </section>
 
         <main className="App__main">
-			<Route exact path='/' render={ () =>
-				<NotePage />
-			} />
+          <Route exact path="/" 
+              render={ (routerProps) => {
+                return <Main notes={notes} {...routerProps} />} 
+              }
+          />
+
+          <Route exact path="/folder/:folderId"
+            render={ (routerProps) => {
+              let notesInFolder = [];
+              if (!routerProps.match.params.folderId){
+                notesInFolder = notes
+              } else {
+                notesInFolder = notes.filter( note => note.folderId === routerProps.match.params.folderId)
+              }
+
+              return <Main notesInFolder={notesInFolder} {...routerProps} />
+            }}
+          />
         </main>
         
       </div>
@@ -47,4 +73,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default App

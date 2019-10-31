@@ -1,10 +1,11 @@
 import React from 'react'
-import '/NotePage.css'
+import Note from '../Note/Note'
+import './NotePage.css'
 
 function NotePage(props){
     return (
         <div className="NotePage">
-            <Note />
+            <Note notes={props.notes}/>
 
             <div className="NotePage__content">
                 {props.content}

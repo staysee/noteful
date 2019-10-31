@@ -26,4 +26,8 @@ class FolderList extends React.Component {
     }
 }
 
+FolderList.defaultProps = {
+    folders: []
+}
+
 export default FolderList

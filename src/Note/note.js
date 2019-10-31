@@ -6,7 +6,7 @@ function Note(props){
 
     return (
         <div className="Note">
-            <Link to={`/note/${props.ied}`}>
+            <Link to={`/note/${props.id}`}>
                 <h2>{props.name}</h2>
             </Link>
 
