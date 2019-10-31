@@ -1,18 +1,19 @@
 import React from 'react'
-import STORE from '../dummy-store'
+import { Link } from 'react-router-dom'
+import './Note.css'
 
 function Note(props){
-    const note = STORE.notes.find(n =>
-        n.id === props.match.params.noteId
-        )
+
     return (
         <div className="Note">
-            <h2>{note.name}</h2>
+            <Link to={`/note/${props.ied}`}>
+                <h2>{props.name}</h2>
+            </Link>
+
             <div className="Note__date-modified">
-                Modified on {note.modified}
+                Modified on {props.modified}
             </div>
-            {/* <p>Content: {props.content}</p> */}
-            {/* {console.log(props)} */}
+
             <button>Delete Note</button>
         </div>
     )

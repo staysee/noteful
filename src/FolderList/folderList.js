@@ -1,16 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import STORE from '../dummy-store'
-import './folderList.css'
+import { NavLink } from 'react-router-dom'
+import './FolderList.css'
 
 class FolderList extends React.Component {
 
     render() {
-        const folderList = STORE.folders.map( folder => 
+        const { folders } = this.props;
+
+        const folderList = folders.map( folder => 
             <li className="FolderList__item" key={folder.id}>
-                <Link to={`/folder/${folder.id}`}>
+                <NavLink to={`/folder/${folder.id}`}>
                     {folder.name}
-                </Link>
+                </NavLink>
             </li>
         );
 

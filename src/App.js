@@ -1,18 +1,24 @@
 import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Route} from 'react-router-dom'
+import FolderList from './FolderList/FolderList'
+import Main from './Main/Main'
+import DUMMYSTORE from './dummy-store'
+import NotePage from './NotePage/NotePage'
 import './App.css';
 
-import FolderList from './FolderList/folderList'
-import Main from './Main/main'
-import Note from './Note/note'
-
 class App extends React.Component {
-  // state = {
-  //   folders: STORE.folders,
-  //   notes: STORE.notes
-  // }
+  state = {
+    folders: [],
+    notes: []
+  }
+
+  componentDidMount(){
+    setTimeout( () => this.setState(DUMMYSTORE), 600)
+  }
 
   render(){
+	const { notes, folders } = this.state;
+
     return (
       <div className="App">
         <header className="App__header">
@@ -20,21 +26,20 @@ class App extends React.Component {
             <Link to='/' className="Header__Link">Noteful</Link>
           </h1>
         </header>
-        <nav className="App__navigation">
-          <Switch>
-            <Route exact path='/' component={FolderList} />
-            <Route path='/folder/:folderId' component={FolderList} />
-            <Route path='/note/:noteId' component={FolderList} />
-          </Switch>
-        </nav>
+
+        <section className="App__navigation">
+			<Route exact path="/" render={ () =>
+				<FolderList folders={folders} />
+			} />
+			<Route exact path="/folders/:dolferId" render={ () =>
+				<FolderList folders={folders} />
+			} />
+        </section>
 
         <main className="App__main">
-          <Switch>
-            <Route exact path='/' component={Main} />
-            <Route path='/folder/:folderId' component={Main} />
-            <Route path='/note/:noteId' component={Note} />
-          </Switch>
-
+			<Route exact path='/' render={ () =>
+				<NotePage />
+			} />
         </main>
         
       </div>
