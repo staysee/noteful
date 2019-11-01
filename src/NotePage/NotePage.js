@@ -5,10 +5,14 @@ import './NotePage.css'
 function NotePage(props){
     return (
         <div className="NotePage">
-            <Note notes={props.notes}/>
+            <Note 
+                id={props.note.id}
+                name={props.note.name}
+                modified={props.note.modified}
+            />
 
             <div className="NotePage__content">
-                {props.content}
+                {props.note.content}
             </div>
         </div>
     )

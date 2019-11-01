@@ -4,9 +4,13 @@ import './FolderName.css'
 function FolderName(props){
     return (
         <div className="FolderName">
-            <h3>
-                {props.folder.name}
-            </h3>
+
+            {props.folder && (
+                <h3>
+                    {props.folder.name}
+                </h3>
+            )}
+
         </div>
     )
 }

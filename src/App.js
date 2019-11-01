@@ -67,6 +67,14 @@ class App extends React.Component {
               return <Main notes={notesInFolder} {...routerProps} />
             }}
           />
+
+          <Route path="/note/:noteId"
+            render={ (routerProps) => {
+              console.log(`NoteID: `, routerProps.match.params.noteId)
+              const note = notes.find(note => note.id === routerProps.match.params.noteId);
+              return <NotePage note={note} {...routerProps} />
+            }}
+          />
         </main>
         
       </div>
@@ -75,3 +83,6 @@ class App extends React.Component {
 }
 
 export default App
+
+export const findNote = (notes=[], noteId) =>
+  notes.find(note => note.id === noteId)
