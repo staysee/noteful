@@ -1,23 +1,27 @@
 .FolderList__list {
-    padding-left: 0;
+    padding: 0;
     margin-top: 130px;
-}
-.FolderList__item {
     list-style: none;
-    border: 1px solid white;
+}
+
+.FolderList__folder {
+    display: block;
+    background-color: #0b332e;
+    color: rgb(173, 173, 173);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bolder;
+    text-transform: uppercase;
     padding: 15px;
-    margin: 10px 0;
+    margin-bottom: 5px;
     text-align: center;
 }
 
-.FolderList__item a {
+.FolderList__folder.active {
     color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
+    background-color: #1b8179;
 }
 
 .FolderList__item a:hover {
-    color: yellow;
+    color: #FFB72F;
 }

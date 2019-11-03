@@ -18,4 +18,10 @@ function NotePage(props){
     )
 }
 
+NotePage.defaultProps = {
+    note: {
+        content: ''
+    }
+}
+
 export default NotePage

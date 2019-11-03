@@ -1,0 +1,10 @@
+.NotePage {
+    padding: 10px;
+}
+
+.NotePage__content {
+    background-color: white;
+    max-width: 380px;
+    margin-left: 8px;
+    padding: 10px;
+}

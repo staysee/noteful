@@ -1,0 +1,33 @@
+.Note {
+    background-color: #0b332e;
+    padding: 8px 0 8px 8px;
+    height: 88px;
+    max-width: 380px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.Note__title{
+    font-size: 20px;
+}
+
+.Note__title a {
+    text-decoration: none;
+    color: #cacaca;
+}
+
+.Note__title a:hover {
+    color: #FFB72F;
+}
+
+.Note__date {
+    font-size: 14px;
+    position: absolute;
+    bottom: 8px;
+    color: rgb(173, 173, 173);
+}
+
+.Note__delete {
+    float: right;
+
+}

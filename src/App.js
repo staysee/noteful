@@ -30,7 +30,7 @@ class App extends React.Component {
 
         <section className="App__navigation">
           <Route exact path="/" 
-            render={ (routerProps) => 
+            render={ (routerProps, history) => 
             <FolderList folders={folders} {...routerProps} />} 
           />
           <Route exact path="/folder/:folderId"
@@ -72,7 +72,8 @@ class App extends React.Component {
             render={ (routerProps) => {
               console.log(`NoteID: `, routerProps.match.params.noteId)
               const note = notes.find(note => note.id === routerProps.match.params.noteId);
-              return <NotePage note={note} {...routerProps} />
+              console.log(note)
+              return <NotePage {...routerProps} note={note} />
             }}
           />
         </main>

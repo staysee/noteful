@@ -6,15 +6,19 @@ function Note(props){
 
     return (
         <div className="Note">
-            <Link to={`/note/${props.id}`}>
-                <h2>{props.name}</h2>
-            </Link>
-
-            <div className="Note__date-modified">
+            <h2 className="Note__title">
+                <Link to={`/note/${props.id}`}>
+                    {props.name}
+                </Link>
+            </h2>
+            
+            <div className="Note__date">
                 Modified on {props.modified}
             </div>
 
-            <button>Delete Note</button>
+            <button className="Note__delete">
+                Delete Note
+            </button>
         </div>
     )
 }
