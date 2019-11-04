@@ -29,5 +29,19 @@
 
 .Note__delete {
     float: right;
+    font-size: 12px;
+    transform: rotate(-90deg);
+    position: relative;
+    transform-origin: right bottom;
+    top: -99px;
+    width: 103px;
+    height: 32px;
+    background-color: #124943;
+    border: 0;
+    color: rgb(173, 173, 173);
+}
 
+.Note__delete:hover {
+    cursor: pointer;
+    background-color: rgba(92, 8, 8, 0.89);
 }

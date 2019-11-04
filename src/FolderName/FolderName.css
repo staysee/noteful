@@ -1,3 +1,8 @@
-.FolderName {
+.FolderName__name {
     color: white;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    margin-top: 95px;
+    margin-left: auto;
+    font-size: 30px;
 }

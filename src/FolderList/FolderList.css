@@ -25,3 +25,29 @@
 .FolderList__item a:hover {
     color: #FFB72F;
 }
+
+
+.AddFolder, .AddNote {
+    display: block;
+    background: #1b8179;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 33px;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.AddFolder:hover, .AddNote:hover {
+    cursor: pointer;
+    background-color: #FFB72F;
+}
+
+.plus-icon {
+    display: block;
+    margin: 0 auto;
+    padding-top: 12px;
+}
