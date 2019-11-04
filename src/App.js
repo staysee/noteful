@@ -3,8 +3,9 @@ import { Link, Route} from 'react-router-dom'
 import FolderList from './FolderList/FolderList'
 import FolderName from './FolderName/FolderName'
 import Main from './Main/Main'
-import DUMMYSTORE from './dummy-store'
 import NotePage from './NotePage/NotePage'
+import config from './config'
+import DUMMYSTORE from './dummy-store'
 import './App.css';
 
 class App extends React.Component {
@@ -14,7 +15,26 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    setTimeout( () => this.setState(DUMMYSTORE), 600)
+    // setTimeout( () => this.setState(DUMMYSTORE), 600)
+    Promise.all([
+		fetch(`${config.API_ENDPOINT}/notes`),
+		fetch(`${config.API_ENDPOINT}/folders`)
+	])
+		.then( ([notesRes, foldersRes]) => {
+			if (!notesRes.ok)
+				return notesRes.json().then( e => Promise.reject(e))
+			if (!foldersRes.ok)
+				return foldersRes.json().then( e => Promise.reject(e))
+			
+			return Promise.all([notesRes.json(), foldersRes.json()])
+		})
+		.then(([notes, folders]) => {
+			console.log(`setting state!`)
+			this.setState({notes, folders})
+		})
+		.catch( error => {
+			console.error ({ error })
+		})
   }
 
   render(){
