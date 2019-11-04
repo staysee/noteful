@@ -4,6 +4,12 @@ import './FolderName.css'
 function FolderName(props){
     return (
         <div className="FolderName">
+            <button
+                className="goBack-button"
+                onClick={() => props.history.goBack()}
+            >
+                Back
+            </button>
 
             {props.folder && (
                 <h3 className="FolderName__name">

@@ -12,8 +12,6 @@ function Main(props){
                         </li>
                     )}
                 </ul>
-
-                <button>Add New Note</button>
             </div>
         )
 }
