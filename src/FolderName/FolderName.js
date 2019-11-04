@@ -21,4 +21,10 @@ function FolderName(props){
     )
 }
 
+FolderName.defaultProps = {
+    history: {
+        goBack: () => {}
+    }
+}
+
 export default FolderName

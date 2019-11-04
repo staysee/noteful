@@ -16,4 +16,8 @@ function Main(props){
         )
 }
 
+Main.defaultProps = {
+    notes: []
+}
+
 export default Main
