@@ -8,10 +8,18 @@ class Main extends React.Component {
 
     render(){
         const { notes } = this.context;
+        const { folderId } = this.props.match.params;
+        let notesInFolder = [];
+        if (!folderId) {
+            notesInFolder = notes
+        } else {
+            notesInFolder = notes.filter (note => note.folderId === folderId)
+        }
+
         return(
             <div className="Main">
                 <ul className="Main__list">
-                    {notes.map( note =>
+                    {notesInFolder.map( note =>
                         <li key={note.id}>
                             <Note id={note.id} {...note} />
                         </li>
