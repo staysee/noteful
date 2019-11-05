@@ -5,7 +5,7 @@ import FolderName from './FolderName/FolderName'
 import Main from './Main/Main'
 import NotePage from './NotePage/NotePage'
 import NotefulContext from './NotefulContext'
-import DUMMYSTORE from './dummy-store'
+// import DUMMYSTORE from './dummy-store'
 import config from './config'
 import './App.css';
 
@@ -39,9 +39,7 @@ class App extends React.Component {
 	}
 
 	deleteNote = noteId => {
-		const newNotes = this.state.notes.filter( note =>
-			note.id !== noteId
-		)
+		const newNotes = this.state.notes.filter( note => note.id !== noteId);
 		this.setState({
 			notes: newNotes
 		})
@@ -59,9 +57,7 @@ class App extends React.Component {
 			<NotefulContext.Provider value={value}>
 				<div className="App">
 					<header className="App__header">
-						<h1>
-						<Link to='/' className="Header__Link">Noteful</Link>
-						</h1>
+						<h1><Link to='/' className="Header__Link">Noteful</Link></h1>
 					</header>
 
 					<section className="App__navigation">

@@ -54,8 +54,7 @@ class Note extends React.Component {
     
                 <button 
                     className="Note__delete"
-                    onClick={this.handleClickDelete}
-                >
+                    onClick={this.handleClickDelete}>
                     Delete Note
                 </button>
             </div>
