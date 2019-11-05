@@ -1,5 +1,5 @@
 import React from 'react'
-import ApiContext from '../ApiContext'
+import NotefulContext from '../NotefulContext'
 import './FolderName.css'
 
 class FolderName extends React.Component {
@@ -11,13 +11,13 @@ class FolderName extends React.Component {
             params: {}
         }
     }
-    static contextType = ApiContext;
+    static contextType = NotefulContext;
 
     render() {
         console.log(this.context);
         const { notes, folders } = this.context;
         const { noteId } = this.props.match.params;
-        const note = notes.find( note => note.id === noteId);
+        const note = notes.find( note => note.id === noteId) || {};
         const folder = folders.find( folder => folder.id === note.folderId);
 
         return (

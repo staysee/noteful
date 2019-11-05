@@ -1,6 +1,6 @@
 import React from 'react'
 import Note from '../Note/Note'
-import ApiContext from '../ApiContext'
+import NotefulContext from '../NotefulContext'
 import './NotePage.css'
 
 class NotePage extends React.Component {
@@ -9,7 +9,12 @@ class NotePage extends React.Component {
             params: {}
         }
     }
-    static contextType = ApiContext;
+    static contextType = NotefulContext;
+
+    handleDeleteNote = noteId =>{
+        //redirect to "/" after note is deleted
+        this.props.history.push("/");
+    }
 
     render() {
         const { notes } = this.context;
@@ -22,6 +27,7 @@ class NotePage extends React.Component {
                     id={note.id}
                     name={note.name}
                     modified={note.modified}
+                    onDeleteNote={this.handleDeleteNote}
                 />
     
                 <div className="NotePage__content">

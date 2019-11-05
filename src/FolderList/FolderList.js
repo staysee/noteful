@@ -2,11 +2,11 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import ApiContext from '../ApiContext'
+import NotefulContext from '../NotefulContext'
 import './FolderList.css'
 
 class FolderList extends React.Component {
-    static contextType = ApiContext;
+    static contextType = NotefulContext;
 
     render() {
         const { folders } = this.context;

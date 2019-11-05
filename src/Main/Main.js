@@ -1,20 +1,26 @@
 import React from 'react'
 import Note from '../Note/Note'
-import ApiContext from '../ApiContext'
+import NotefulContext from '../NotefulContext'
 import './Main.css'
 
 class Main extends React.Component {
-    static contextType = ApiContext
+    static defaultProps = {
+        match: {
+            params: {}
+        }
+    }
+
+    static contextType = NotefulContext
 
     render(){
-        const { notes } = this.context;
+        const { notes=[] } = this.context;
         const { folderId } = this.props.match.params;
         let notesInFolder = [];
-        if (!folderId) {
-            notesInFolder = notes
-        } else {
-            notesInFolder = notes.filter (note => note.folderId === folderId)
-        }
+            if (!folderId) {
+                notesInFolder = notes
+            } else {
+                notesInFolder = notes.filter (note => note.folderId === folderId)
+            }
 
         return(
             <div className="Main">

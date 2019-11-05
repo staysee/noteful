@@ -1,10 +1,42 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ApiContext from '../ApiContext'
+import NotefulContext from '../NotefulContext'
+import config from '../config'
 import './Note.css'
 
 class Note extends React.Component {
-    static contextType = ApiContext;
+    static defaultProps = {
+        onDeleteNote: () => {}
+    }
+    
+    static contextType = NotefulContext;
+
+    handleClickDelete = event => {
+        event.preventDefault();
+
+        const noteId = this.props.id;
+    
+        fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+            method: 'DELETE', 
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => {
+            if (!res.ok){
+                return res.json().then(error => Promise.reject(event))
+            }
+             return res.json()
+        })
+        .then( () => {
+            this.context.deleteNote(noteId)
+            console.log('this is where the note gets deleted')
+            this.props.onDeleteNote(noteId)
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    }
 
     render() {
         const { id, name, modified } = this.props;
@@ -20,7 +52,10 @@ class Note extends React.Component {
                     Modified on {modified}
                 </div>
     
-                <button className="Note__delete">
+                <button 
+                    className="Note__delete"
+                    onClick={this.handleClickDelete}
+                >
                     Delete Note
                 </button>
             </div>
