@@ -1,26 +1,34 @@
 import React from 'react'
 import Note from '../Note/Note'
+import ApiContext from '../ApiContext'
 import './NotePage.css'
 
-function NotePage(props){
-    return (
-        <div className="NotePage">
-            <Note 
-                id={props.note.id}
-                name={props.note.name}
-                modified={props.note.modified}
-            />
+class NotePage extends React.Component {
+    static defaultProps = {
+        match: {
+            params: {}
+        }
+    }
+    static contextType = ApiContext;
 
-            <div className="NotePage__content">
-                {props.note.content}
+    render() {
+        const { notes } = this.context;
+        const { noteId } = this.props.match.params;
+        const note = notes.find( note => note.id === noteId) || { content: `` };
+
+        return (
+            <div className="NotePage">
+                <Note 
+                    id={note.id}
+                    name={note.name}
+                    modified={note.modified}
+                />
+    
+                <div className="NotePage__content">
+                    {note.content}
+                </div>
             </div>
-        </div>
-    )
-}
-
-NotePage.defaultProps = {
-    note: {
-        content: ''
+        )
     }
 }
 

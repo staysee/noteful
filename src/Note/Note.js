@@ -1,26 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ApiContext from '../ApiContext'
 import './Note.css'
 
-function Note(props){
+class Note extends React.Component {
+    static contextType = ApiContext;
 
-    return (
-        <div className="Note">
-            <h2 className="Note__title">
-                <Link to={`/note/${props.id}`}>
-                    {props.name}
-                </Link>
-            </h2>
-            
-            <div className="Note__date">
-                Modified on {props.modified}
+    render() {
+        const { id, name, modified } = this.props;
+        return (
+            <div className="Note">
+                <h2 className="Note__title">
+                    <Link to={`/note/${id}`}>
+                        {name}
+                    </Link>
+                </h2>
+                
+                <div className="Note__date">
+                    Modified on {modified}
+                </div>
+    
+                <button className="Note__delete">
+                    Delete Note
+                </button>
             </div>
-
-            <button className="Note__delete">
-                Delete Note
-            </button>
-        </div>
-    )
+        )
+    }
 }
 
 export default Note

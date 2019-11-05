@@ -6,15 +6,19 @@ import Main from './Main/Main'
 import NotePage from './NotePage/NotePage'
 import config from './config'
 import DUMMYSTORE from './dummy-store'
+import ApiContext from './ApiContext'
 import './App.css';
 
 class App extends React.Component {
   state = {
-    folders: [],
-    notes: []
+	notes: [],
+    folders: []
   }
 
+
   componentDidMount(){
+	  	  
+	console.log(ApiContext);
     // setTimeout( () => this.setState(DUMMYSTORE), 600)
     Promise.all([
 		fetch(`${config.API_ENDPOINT}/notes`),
@@ -38,67 +42,50 @@ class App extends React.Component {
   }
 
   render(){
-	const { notes, folders } = this.state;
+	//change state to context value
+	const value = {
+		notes: this.state.notes,
+		folders: this.state.folders
+	}
 
     return (
-      <div className="App">
-        <header className="App__header">
-          <h1>
-            <Link to='/' className="Header__Link">Noteful</Link>
-          </h1>
-        </header>
+		<ApiContext.Provider value={value}>
+			<div className="App">
+			<header className="App__header">
+				<h1>
+				<Link to='/' className="Header__Link">Noteful</Link>
+				</h1>
+			</header>
 
-        <section className="App__navigation">
-          <Route exact path="/" 
-            render={ (routerProps, history) => 
-            <FolderList folders={folders} {...routerProps} />} 
-          />
-          <Route exact path="/folder/:folderId"
-            render={ (routerProps) => 
-              <FolderList folders={folders} {...routerProps} />} 
-          />
+			<section className="App__navigation">
+				<Route exact path="/" 
+					component={FolderList}
+				/>
+				<Route exact path="/folder/:folderId"
+					component={FolderList}
+				/>
 
-          <Route path="/note/:noteId"
-            render={ (routerProps) => {
-              const note = notes.find(note => note.id === routerProps.match.params.noteId);
-              const folder = folders.find(folder => folder.id === note.folderId);
-              return <FolderName folder={folder} {...routerProps} />
-            }}
-          />
-        </section>
+				<Route path="/note/:noteId"
+					component={FolderName}
+				/>
+			</section>
 
-        <main className="App__main">
-          <Route exact path="/" 
-              render={ (routerProps) => {
-                console.log(routerProps)
-                return <Main notes={notes} {...routerProps} />} 
-              }
-          />
+			<main className="App__main">
+				<Route exact path="/" 
+					component={Main}
+				/>
 
-          <Route exact path="/folder/:folderId"
-            render={ (routerProps) => {
-              let notesInFolder = [];
-              if (!routerProps.match.params.folderId){
-                notesInFolder = notes
-              } else {
-                notesInFolder = notes.filter( note => note.folderId === routerProps.match.params.folderId)
-              }
+				<Route exact path="/folder/:folderId"
+					component={Main}
+				/>
 
-              return <Main notes={notesInFolder} {...routerProps} />
-            }}
-          />
-
-          <Route path="/note/:noteId"
-            render={ (routerProps) => {
-              console.log(`NoteID: `, routerProps.match.params.noteId)
-              const note = notes.find(note => note.id === routerProps.match.params.noteId);
-              console.log(note)
-              return <NotePage {...routerProps} note={note} />
-            }}
-          />
-        </main>
-        
-      </div>
+				<Route path="/note/:noteId"
+					component={NotePage}
+				/>
+			</main>
+			
+			</div>
+		</ApiContext.Provider>
     );
   }
 }
