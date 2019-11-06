@@ -27,7 +27,7 @@
 }
 
 
-.AddFolder, .AddNote {
+.Add__folder-button, .Add__note-button {
     display: block;
     background-color: #1b8179;
     height: 70px;
@@ -41,7 +41,7 @@
     margin-bottom: 15px;
 }
 
-.AddFolder:hover, .AddNote:hover {
+.Add__folder-button:hover, .Add__note-button:hover {
     cursor: pointer;
     background-color: #FFB72F;
 }

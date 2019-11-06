@@ -4,6 +4,7 @@ import FolderList from './FolderList/FolderList'
 import FolderName from './FolderName/FolderName'
 import Main from './Main/Main'
 import NotePage from './NotePage/NotePage'
+import AddFolder from './AddFolder/AddFolder'
 import NotefulContext from './NotefulContext'
 // import DUMMYSTORE from './dummy-store'
 import config from './config'
@@ -43,14 +44,22 @@ class App extends React.Component {
 		this.setState({
 			notes: newNotes
 		})
-	}	
+	}
+	
+	addFolder = folder => {
+		const newFolders = [...this.state.folders, folder];
+		this.setState({
+			folders: newFolders
+		})
+	}
 
 	render(){
 		//change state to context value
 		const value = {
 			notes: this.state.notes,
 			folders: this.state.folders,
-			deleteNote: this.deleteNote
+			deleteNote: this.deleteNote,
+			addFolder: this.addFolder
 		}
 
 		return (
@@ -64,12 +73,14 @@ class App extends React.Component {
 						<Route exact path="/" component={FolderList} />
 						<Route exact path="/folder/:folderId" component={FolderList} />
 						<Route path="/note/:noteId" component={FolderName} />
+						<Route path="/add-folder" comonent={FolderList} />
 					</section>
 
 					<main className="App__main">
 						<Route exact path="/" component={Main} />
 						<Route exact path="/folder/:folderId" component={Main} />
 						<Route path="/note/:noteId" component={NotePage} />
+						<Route path="/add-folder" component={AddFolder} />
 					</main>
 				</div>
 			</NotefulContext.Provider>

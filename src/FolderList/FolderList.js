@@ -27,13 +27,13 @@ class FolderList extends React.Component {
                 
                 <div className="Add__buttons">
                     <NavLink 
-                        className="AddFolder"
+                        className="Add__folder-button"
                         to="/add-folder">
                             <FontAwesomeIcon icon={faPlus} className="plus-icon" />
                             Folder
                     </NavLink>
                     <NavLink 
-                        className="AddNote"
+                        className="Add__note-button"
                         to="/add-note">
                             <FontAwesomeIcon icon={faPlus} className="plus-icon" />
                             Note
