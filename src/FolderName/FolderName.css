@@ -4,6 +4,7 @@
     text-orientation: upright;
     margin: 20px auto;
     font-size: 30px;
+    float: right;
 }
 
 .goBack-button {

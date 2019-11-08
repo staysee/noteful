@@ -1,26 +1,65 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import NotefulContext from '../NotefulContext'
+import config from '../config'
 import './Note.css'
 
-function Note(props){
+class Note extends React.Component {
+    static defaultProps = {
+        onDeleteNote: () => {}
+    }
+    
+    static contextType = NotefulContext;
 
-    return (
-        <div className="Note">
-            <h2 className="Note__title">
-                <Link to={`/note/${props.id}`}>
-                    {props.name}
-                </Link>
-            </h2>
-            
-            <div className="Note__date">
-                Modified on {props.modified}
+    handleClickDelete = event => {
+        event.preventDefault();
+
+        const noteId = this.props.id;
+    
+        fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+            method: 'DELETE', 
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => {
+            if (!res.ok){
+                return res.json().then(error => Promise.reject(event))
+            }
+             return res.json()
+        })
+        .then( () => {
+            this.context.deleteNote(noteId)
+            console.log('this is where the note gets deleted')
+            this.props.onDeleteNote(noteId)
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    }
+
+    render() {
+        const { id, name, modified } = this.props;
+        return (
+            <div className="Note">
+                <h2 className="Note__title">
+                    <Link to={`/note/${id}`}>
+                        {name}
+                    </Link>
+                </h2>
+                
+                <div className="Note__date">
+                    Modified on {modified}
+                </div>
+    
+                <button 
+                    className="Note__delete"
+                    onClick={this.handleClickDelete}>
+                    Delete Note
+                </button>
             </div>
-
-            <button className="Note__delete">
-                Delete Note
-            </button>
-        </div>
-    )
+        )
+    }
 }
 
 export default Note

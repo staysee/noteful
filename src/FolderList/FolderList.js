@@ -2,12 +2,14 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import NotefulContext from '../NotefulContext'
 import './FolderList.css'
 
 class FolderList extends React.Component {
+    static contextType = NotefulContext;
 
     render() {
-        const { folders } = this.props;
+        const { folders } = this.context;
 
         const folderList = folders.map( folder => 
             <li key={folder.id}>
@@ -40,10 +42,6 @@ class FolderList extends React.Component {
             </div>
         )
     }
-}
-
-FolderList.defaultProps = {
-    folders: []
 }
 
 export default FolderList
