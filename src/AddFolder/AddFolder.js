@@ -9,7 +9,9 @@ class AddFolder extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
         
-        const folder = event.target['folder-name'].value;
+        const folder = {
+            name: event.target['folder-name'].value
+        }
         console.log(`Folder: `, folder)
 
         const url = `${config.API_ENDPOINT}/folders`;
@@ -21,6 +23,8 @@ class AddFolder extends React.Component {
             }
         };
 
+        console.log(options)
+
         fetch(url, options)
             .then(res => {
                 if (!res.ok)
@@ -30,7 +34,7 @@ class AddFolder extends React.Component {
             .then( folder => {
                 console.log(folder)
                 this.context.addFolder(folder)
-                this.props.history.push(`/folder/${folder.id}`)
+                this.props.history.push(`/folders/${folder.id}`)
             })
             .catch( err => {
                 this.setState({
