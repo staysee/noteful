@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main component renders a .Main by default 1`] = `
+<div
+  className="Main"
+>
+  <ul
+    className="Main__list"
+  />
+</div>
+`;
+
+exports[`Main component renders a Note in ul for each notes in array 1`] = `
+<ul
+  className="Main__list"
+/>
+`;
