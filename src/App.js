@@ -54,13 +54,21 @@ class App extends React.Component {
 		})
 	}
 
+	addNote = note => {
+		const newNotes = [...this.state.notes, note];
+		this.setState({
+			notes: newNotes
+		})
+	}
+
 	render(){
 		//change state to context value
 		const value = {
 			notes: this.state.notes,
 			folders: this.state.folders,
 			deleteNote: this.deleteNote,
-			addFolder: this.addFolder
+			addFolder: this.addFolder,
+			addNote: this.addNote
 		}
 
 		return (
