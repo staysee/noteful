@@ -34,7 +34,7 @@ class AddFolder extends React.Component {
             .then( folder => {
                 console.log(folder)
                 this.context.addFolder(folder)
-                this.props.history.push(`/folders/${folder.id}`)
+                this.props.history.push(`/folder/${folder.id}`)
             })
             .catch( err => {
                 this.setState({
