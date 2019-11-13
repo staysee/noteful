@@ -57,12 +57,20 @@ class AddNote extends React.Component {
                 <form className="AddNote__form" onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="note-name">Name</label>
-                        <input type="text" id="note-name" name="note-name" />
+                        <input 
+                            type="text" 
+                            id="note-name" 
+                            name="note-name" 
+                            onChange={this.handleChange} />
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="note-content">Content</label>
-                        <input type="text" id="note-content" name="note-content" />
+                        <input 
+                            type="text" 
+                            id="note-content" 
+                            name="note-content" 
+                            onChange={this.handleChange} />
                     </div>
 
                     <div className="form-group">
@@ -75,11 +83,11 @@ class AddNote extends React.Component {
                                 </option>)}
                         </select>
                     </div>
-
-                    <button 
-                        type="submit"
-                        className="AddNote__button"
-                    >
+                    
+                    <button className="AddNote__button-cancel">
+                        Cancel
+                    </button>
+                    <button type="submit" className="AddNote__button-save">
                         Add Note
                     </button>
                 </form>

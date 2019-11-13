@@ -64,6 +64,9 @@ class AddFolder extends React.Component {
                         name="folder-name" 
                         onChange={this.handleChange} />
                     
+                    <button className="AddFolder__cancel-button">
+                        Cancel
+                    </button>
                     <button 
                         type="submit" 
                         className="AddFolder__submit-button">
