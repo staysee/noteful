@@ -34,13 +34,18 @@ class AddFolder extends React.Component {
             .then( folder => {
                 console.log(folder)
                 this.context.addFolder(folder)
-                this.props.history.push(`/folder/${folder.id}`)
+                this.props.history.push(`/folders/${folder.id}`)
             })
             .catch( err => {
                 this.setState({
                     error: err.message
                 })
             })
+    }
+
+    handleChange = event => {
+        const { target: { name, value } } = event;
+        this.setState({ [name]: value })
     }
 
     render() {
@@ -53,7 +58,11 @@ class AddFolder extends React.Component {
                     onSubmit={this.handleSubmit}
                 >
                     <label htmlFor="folder-name">Name</label>
-                    <input type="text" id="folder-name" name="folder-name" />
+                    <input 
+                        type="text" 
+                        id="folder-name" 
+                        name="folder-name" 
+                        onChange={this.handleChange} />
                     
                     <button 
                         type="submit" 

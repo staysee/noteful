@@ -80,16 +80,16 @@ class App extends React.Component {
 
 					<section className="App__navigation">
 						<Route exact path="/" component={FolderList} />
-						<Route exact path="/folder/:folderId" component={FolderList} />
-						<Route path="/note/:noteId" component={FolderName} />
+						<Route exact path="/folders/:folderId" component={FolderList} />
+						<Route path="/notes/:noteId" component={FolderName} />
 						<Route path="/add-folder" component={FolderList} />
 						<Route path="/add-note" component={FolderList} />
 					</section>
 
 					<main className="App__main">
 						<Route exact path="/" component={Main} />
-						<Route exact path="/folder/:folderId" component={Main} />
-						<Route path="/note/:noteId" component={NotePage} />
+						<Route exact path="/folders/:folderId" component={Main} />
+						<Route path="/notes/:noteId" component={NotePage} />
 						<Route path="/add-folder" component={AddFolder} />
 						<Route path="/add-note" component={AddNote} />
 					</main>

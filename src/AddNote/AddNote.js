@@ -34,13 +34,18 @@ class AddNote extends React.Component {
             .then( note => {
                 console.log(note);
                 this.context.addNote(note)
-                this.props.history.push(`/folder/${note.folderId}`)
+                this.props.history.push(`/folders/${note.folderId}`)
             })
             .catch( err => {
                 this.setState({
                     error: err.message
                 })
             })
+    }
+
+    handleChange = event => {
+        const { target: { name, value } } = event
+        this.setState({ [name]: value, event: event })
     }
 
     render() {
