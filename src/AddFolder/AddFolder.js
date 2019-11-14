@@ -43,8 +43,9 @@ class AddFolder extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
         
+        const  { folderName } = this.state;
         const folder = {
-            name: event.target['name'].value
+            name: folderName.name
         }
         console.log(`Folder: `, folder)
 
@@ -82,7 +83,7 @@ class AddFolder extends React.Component {
     render() {
         const folderNameError = this.validateFolderName();
 
-        return(
+        return (
             <div className="AddFolder">
                 <h2>Create a New Folder</h2>
 
@@ -97,8 +98,8 @@ class AddFolder extends React.Component {
                         id="name" 
                         name="name" 
                         onChange={e => this.setFolderName(e.target.value)} />
-                    {this.state.folderName.touched && (
-                        <ValidationError message={folderNameError} />
+                    {this.state.folderName.touched && ( 
+                        <ValidationError message={folderNameError} /> 
                     )}
 
                     <button 
@@ -109,8 +110,7 @@ class AddFolder extends React.Component {
                     <button 
                         type="submit" 
                         className="AddFolder__submit-button"
-                        disabled={this.validateFolderName()}
-                        >
+                        disabled={this.validateFolderName()}>
                         Add Folder
                     </button>
                 </form>

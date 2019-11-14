@@ -1,20 +1,96 @@
 import React from 'react'
 import NotefulContext from '../NotefulContext'
+import ValidationError from '../ValidationError/ValidationError'
 import config from '../config'
 import './AddNote.css'
 
 class AddNote extends React.Component {
     static contextType = NotefulContext;
 
+    constructor(props){
+        super(props);
+        this.state = {
+            noteName: {
+                name: '',
+                touched: false
+            },
+            noteContent: {
+                content: '',
+                touched: false
+            },
+            noteFolder: {
+                folderId: '',
+                touched: false
+            }
+        }
+    }
+
+    setNoteName = noteName => {
+        this.setState({
+            noteName: {
+                name: noteName,
+                touched: true
+            },
+        })
+    }
+
+    setNoteContent = noteContent => {
+        this.setState({
+            noteContent: {
+                content: noteContent,
+                touched: true
+            }
+        })
+    }
+
+    setNoteFolder = noteFolderId => {
+        this.setState({
+            noteFolder: {
+                folderId: noteFolderId,
+                touched: true
+            }
+        })
+    }
+
+    validateName(fieldValue){
+        const name = this.state.noteName.name.trim();
+        if (name.length === 0){
+            return 'Name is required'
+        } else if (name.length < 2){
+            return 'Name must be at least 2 characters long'
+        }
+    }
+
+    validateContent(fieldValue){
+        const content = this.state.noteContent.content.trim();
+        if (content.length === 0){
+            return 'You must enter some content.'
+        } else if (content.length < 5){
+            return 'Content must be over 5 characters long.'
+        }
+    }
+
+    validateFolder(fieldValue){
+        const folderId = this.state.noteFolder.folderId.trim();
+        if (folderId.length === 0){
+            return 'You must select a folder.'
+        }
+    }
+
     handleSubmit = event => {
         event.preventDefault();
 
+        const { noteName, noteContent, noteFolder } = this.state;
+
         const newNote = {
-            name: event.target['note-name'].value,
-            content: event.target['note-content'].value,
-            folderId: event.target['note-folder'].value,
+            name: noteName.name,
+            content: noteContent.content,
+            folderId: noteFolder.folderId,
             modified: new Date()
         }
+        console.log(`Name`, noteName.name)
+        console.log(`Content`, noteContent.content)
+        console.log(`Folder`, noteFolder.folderId)
 
         const url = `${config.API_ENDPOINT}/notes`;
         const options = {
@@ -46,7 +122,7 @@ class AddNote extends React.Component {
     handleClickCancel = () => {
         this.props.history.push('/')
     }
-    
+
     handleChange = event => {
         const { target: { name, value } } = event
         this.setState({ [name]: value, event: event })
@@ -54,6 +130,11 @@ class AddNote extends React.Component {
 
     render() {
         const { folders } = this.context;
+        const { noteName, noteContent, noteFolder } = this.state;
+        const nameError = this.validateName();
+        const contentError = this.validateContent();
+        const folderError = this.validateFolder();
+
 
         return(
             <div className="AddNote">
@@ -62,10 +143,14 @@ class AddNote extends React.Component {
                     <div className="form-group">
                         <label htmlFor="note-name">Name</label>
                         <input 
-                            type="text" 
+                            type="text"
                             id="note-name" 
                             name="note-name" 
-                            onChange={this.handleChange} />
+                            autoComplete="off" 
+                            onChange={e=>this.setNoteName(e.target.value)} />
+                        {noteName.touched && (
+                            <ValidationError message={nameError} />
+                        )}
                     </div>
 
                     <div className="form-group">
@@ -73,19 +158,28 @@ class AddNote extends React.Component {
                         <input 
                             type="text" 
                             id="note-content" 
-                            name="note-content" 
-                            onChange={this.handleChange} />
+                            name="note-content"
+                            autoComplete="off" 
+                            onChange={e=>this.setNoteContent(e.target.value)} />
+                        {noteContent.touched && (
+                            <ValidationError message={contentError} />
+                        )}
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="note-folder">Folder</label>
-                        <select id="note-folder">
+                        <select 
+                            id="note-folder"
+                            onChange={e=>this.setNoteFolder(e.target.value)}>
                             <option value={null}>...</option>
                             {folders.map( folder => 
                                 <option key={folder.id} value={folder.id}>
                                     {folder.name}
                                 </option>)}
                         </select>
+                        {noteFolder.touched && (
+                            <ValidationError message={folderError} />
+                        )}
                     </div>
                     
                     <button 
@@ -93,7 +187,14 @@ class AddNote extends React.Component {
                         onClick={this.handleClickCancel}>
                         Cancel
                     </button>
-                    <button type="submit" className="AddNote__button-save">
+                    <button 
+                        type="submit" 
+                        className="AddNote__button-save"
+                        disabled={
+                            this.validateName() ||
+                            this.validateContent() ||
+                            this.validateFolder()
+                        }>
                         Add Note
                     </button>
                 </form>

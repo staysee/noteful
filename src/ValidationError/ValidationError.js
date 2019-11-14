@@ -8,6 +8,7 @@ function ValidationError(props){
             </div>
         )
     }
+    return <></>
 }
 
 export default ValidationError
