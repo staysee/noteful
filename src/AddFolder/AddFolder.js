@@ -1,4 +1,5 @@
 import React from 'react'
+import ValidationError from '../ValidationError/ValidationError'
 import NotefulContext from '../NotefulContext'
 import config from '../config'
 import './AddFolder.css'
@@ -6,11 +7,44 @@ import './AddFolder.css'
 class AddFolder extends React.Component {
     static contextType = NotefulContext;
 
+    constructor(props){
+        super(props);
+        this.state = {
+            folderName: {
+                name: '',
+                touched: false
+            }
+        }
+    }
+
+    
+    setFolderName = folderName => {
+        this.setState({
+            folderName: {
+                name: folderName,
+                touched: true
+            }
+        })
+    }
+    
+    validateFolderName = fieldValue => {
+        const folderName = this.state.folderName.name.trim();
+        if (folderName.length === 0){
+            return 'Folder name is required';
+        } else if (folderName.length < 2){
+            return 'Name must be at least 2 characters long';
+        }
+    }
+
+    handleClickCancel = () => {
+        this.props.history.push('/');
+    }
+
     handleSubmit = event => {
         event.preventDefault();
         
         const folder = {
-            name: event.target['folder-name'].value
+            name: event.target['name'].value
         }
         console.log(`Folder: `, folder)
 
@@ -43,12 +77,11 @@ class AddFolder extends React.Component {
             })
     }
 
-    handleChange = event => {
-        const { target: { name, value } } = event;
-        this.setState({ [name]: value })
-    }
+    
 
     render() {
+        const folderNameError = this.validateFolderName();
+
         return(
             <div className="AddFolder">
                 <h2>Create a New Folder</h2>
@@ -57,19 +90,27 @@ class AddFolder extends React.Component {
                     className="AddFolder__form"
                     onSubmit={this.handleSubmit}
                 >
-                    <label htmlFor="folder-name">Name</label>
+                    <label htmlFor="name">Name</label>
                     <input 
                         type="text" 
-                        id="folder-name" 
-                        name="folder-name" 
-                        onChange={this.handleChange} />
-                    
-                    <button className="AddFolder__cancel-button">
+                        autoComplete="off"
+                        id="name" 
+                        name="name" 
+                        onChange={e => this.setFolderName(e.target.value)} />
+                    {this.state.folderName.touched && (
+                        <ValidationError message={folderNameError} />
+                    )}
+
+                    <button 
+                        className="AddFolder__cancel-button"
+                        onClick={this.handleClickCancel}>
                         Cancel
                     </button>
                     <button 
                         type="submit" 
-                        className="AddFolder__submit-button">
+                        className="AddFolder__submit-button"
+                        disabled={this.validateFolderName()}
+                        >
                         Add Folder
                     </button>
                 </form>

@@ -43,6 +43,10 @@ class AddNote extends React.Component {
             })
     }
 
+    handleClickCancel = () => {
+        this.props.history.push('/')
+    }
+    
     handleChange = event => {
         const { target: { name, value } } = event
         this.setState({ [name]: value, event: event })
@@ -84,7 +88,9 @@ class AddNote extends React.Component {
                         </select>
                     </div>
                     
-                    <button className="AddNote__button-cancel">
+                    <button 
+                        className="AddNote__button-cancel"
+                        onClick={this.handleClickCancel}>
                         Cancel
                     </button>
                     <button type="submit" className="AddNote__button-save">
