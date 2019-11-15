@@ -12,17 +12,26 @@ exports[`Add Folder component renders the complete form 1`] = `
     onSubmit={[Function]}
   >
     <label
-      htmlFor="folder-name"
+      htmlFor="name"
     >
       Name
     </label>
     <input
-      id="folder-name"
-      name="folder-name"
+      autoComplete="off"
+      id="name"
+      name="name"
+      onChange={[Function]}
       type="text"
     />
     <button
+      className="AddFolder__cancel-button"
+      onClick={[Function]}
+    >
+      Cancel
+    </button>
+    <button
       className="AddFolder__submit-button"
+      disabled="Folder name is required"
       type="submit"
     >
       Add Folder

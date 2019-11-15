@@ -10,7 +10,7 @@ describe(`FolderList component`, () => {
         expect(toJson(wrapper)).toMatchSnapshot()
     })
 
-    //enzyme doesn't yet support React.createContext
+    //enzyme doesn't support React.createContext
     it.skip('renders a link in ul for each folder in array', () => {
         const context = {
             notes: [
@@ -58,6 +58,7 @@ describe(`FolderList component`, () => {
               }
             ]
           }
+          
         const ul = shallow(<FolderList />, context).find('ul')
         expect(toJson(ul)).toMatchSnapshot()
     })
