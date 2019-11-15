@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import NotefulContext from '../NotefulContext'
 import PropTypes from 'prop-types'
+import { format } from 'date-fns'
 import config from '../config'
 import './Note.css'
 
@@ -13,9 +14,9 @@ class Note extends React.Component {
     static contextType = NotefulContext;
 
     handleClickDelete = event => {
-        event.preventDefault();
+        event.preventDefault()
 
-        const noteId = this.props.id;
+        const noteId = this.props.id
     
         fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
             method: 'DELETE', 
@@ -31,7 +32,6 @@ class Note extends React.Component {
         })
         .then( () => {
             this.context.deleteNote(noteId)
-            console.log('this is where the note gets deleted')
             this.props.onDeleteNote(noteId)
         })
         .catch(error => {
@@ -50,7 +50,7 @@ class Note extends React.Component {
                 </h2>
                 
                 <div className="Note__date">
-                    Modified on {modified}
+                    Modified {new Date(modified).toLocaleDateString()}
                 </div>
     
                 <button 

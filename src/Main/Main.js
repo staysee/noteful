@@ -14,9 +14,9 @@ class Main extends React.Component {
     static contextType = NotefulContext
 
     render(){
-        const { notes=[] } = this.context;
-        const { folderId } = this.props.match.params;
-        let notesInFolder = [];
+        const { notes=[] } = this.context
+        const { folderId } = this.props.match.params
+        let notesInFolder = []
             if (!folderId) {
                 notesInFolder = notes
             } else {

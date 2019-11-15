@@ -1,9 +1,9 @@
 .Note {
     background-color: #0b332e;
-    padding: 8px 0 8px 8px;
     height: 88px;
     max-width: 380px;
     margin-bottom: 8px;
+    padding: 8px 0 8px 8px;
     position: relative;
 }
 
@@ -12,8 +12,8 @@
 }
 
 .Note__title a {
-    text-decoration: none;
     color: #cacaca;
+    text-decoration: none;
 }
 
 .Note__title a:hover {
@@ -21,27 +21,27 @@
 }
 
 .Note__date {
-    font-size: 14px;
-    position: absolute;
     bottom: 8px;
     color: rgb(173, 173, 173);
+    font-size: 14px;
+    position: absolute;
 }
 
 .Note__delete {
-    float: right;
-    font-size: 12px;
-    transform: rotate(-90deg);
-    position: relative;
-    transform-origin: right bottom;
-    top: -96px;
-    width: 103px;
-    height: 32px;
     background-color: #124943;
     border: 0;
     color: rgb(173, 173, 173);
+    float: right;
+    font-size: 12px;
+    height: 32px;
+    width: 103px;
+    position: relative;
+    top: -96px;
+    transform: rotate(-90deg);
+    transform-origin: right bottom;
 }
 
 .Note__delete:hover {
-    cursor: pointer;
     background-color: rgba(92, 8, 8, 0.89);
+    cursor: pointer;
 }

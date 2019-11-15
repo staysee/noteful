@@ -3,13 +3,14 @@ import NotefulContext from '../NotefulContext'
 import ValidationError from '../ValidationError/ValidationError'
 import PropTypes from 'prop-types'
 import config from '../config'
+import { format } from 'date-fns'
 import './AddNote.css'
 
 class AddNote extends React.Component {
     static contextType = NotefulContext;
 
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
             noteName: {
                 name: '',
@@ -54,7 +55,7 @@ class AddNote extends React.Component {
     }
 
     validateName(fieldValue){
-        const name = this.state.noteName.name.trim();
+        const name = this.state.noteName.name.trim()
         if (name.length === 0){
             return 'Name is required'
         } else if (name.length < 2){
@@ -63,7 +64,7 @@ class AddNote extends React.Component {
     }
 
     validateContent(fieldValue){
-        const content = this.state.noteContent.content.trim();
+        const content = this.state.noteContent.content.trim()
         if (content.length === 0){
             return 'You must enter some content.'
         } else if (content.length < 5){
@@ -72,16 +73,16 @@ class AddNote extends React.Component {
     }
 
     validateFolder(fieldValue){
-        const folderId = this.state.noteFolder.folderId.trim();
+        const folderId = this.state.noteFolder.folderId.trim()
         if (folderId.length === 0){
             return 'You must select a folder.'
         }
     }
 
     handleSubmit = event => {
-        event.preventDefault();
+        event.preventDefault()
 
-        const { noteName, noteContent, noteFolder } = this.state;
+        const { noteName, noteContent, noteFolder } = this.state
 
         const newNote = {
             name: noteName.name,
@@ -89,11 +90,8 @@ class AddNote extends React.Component {
             folderId: noteFolder.folderId,
             modified: new Date()
         }
-        console.log(`Name`, noteName.name)
-        console.log(`Content`, noteContent.content)
-        console.log(`Folder`, noteFolder.folderId)
 
-        const url = `${config.API_ENDPOINT}/notes`;
+        const url = `${config.API_ENDPOINT}/notes`
         const options = {
             method: 'POST',
             body: JSON.stringify(newNote),
@@ -109,7 +107,6 @@ class AddNote extends React.Component {
                 return res.json()
             })
             .then( note => {
-                console.log(note);
                 this.context.addNote(note)
                 this.props.history.push(`/folders/${note.folderId}`)
             })
@@ -135,7 +132,6 @@ class AddNote extends React.Component {
         const nameError = this.validateName();
         const contentError = this.validateContent();
         const folderError = this.validateFolder();
-
 
         return(
             <div className="AddNote">

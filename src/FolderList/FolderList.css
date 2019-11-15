@@ -1,25 +1,25 @@
 .FolderList__list {
-    padding: 0;
-    margin-top: 130px;
     list-style: none;
+    margin-top: 130px;
+    padding: 0;
 }
 
 .FolderList__folder {
-    display: block;
     background-color: #0b332e;
     color: rgb(173, 173, 173);
-    text-decoration: none;
+    display: block;
     font-size: 18px;
     font-weight: bolder;
-    text-transform: uppercase;
-    padding: 15px;
     margin-bottom: 5px;
+    padding: 15px;
     text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
 .FolderList__folder.active {
-    color: white;
     background-color: #1b8179;
+    color: white;
 }
 
 .FolderList__item a:hover {
@@ -28,22 +28,22 @@
 
 
 .Add__folder-button, .Add__note-button {
-    display: block;
     background-color: #1b8179;
-    height: 70px;
-    width: 70px;
     border-radius: 50%;
-    text-align: center;
-    margin: 0 auto;
-    line-height: 33px;
-    text-decoration: none;
     color: white;
+    display: block;
+    height: 70px;
+    line-height: 33px;
+    margin: 0 auto;
     margin-bottom: 15px;
+    text-align: center;
+    width: 70px;
+    text-decoration: none;
 }
 
 .Add__folder-button:hover, .Add__note-button:hover {
-    cursor: pointer;
     background-color: #FFB72F;
+    cursor: pointer;
 }
 
 .plus-icon {

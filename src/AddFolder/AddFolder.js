@@ -18,7 +18,6 @@ class AddFolder extends React.Component {
         }
     }
 
-    
     setFolderName = folderName => {
         this.setState({
             folderName: {
@@ -38,17 +37,16 @@ class AddFolder extends React.Component {
     }
 
     handleClickCancel = () => {
-        this.props.history.push('/');
+        this.props.history.push('/')
     }
 
     handleSubmit = event => {
         event.preventDefault();
         
-        const  { folderName } = this.state;
+        const  { folderName } = this.state
         const folder = {
             name: folderName.name
         }
-        console.log(`Folder: `, folder)
 
         const url = `${config.API_ENDPOINT}/folders`;
         const options = {
@@ -57,9 +55,7 @@ class AddFolder extends React.Component {
             headers: {
                 'content-type': 'application/json'
             }
-        };
-
-        console.log(options)
+        }
 
         fetch(url, options)
             .then(res => {
@@ -78,8 +74,6 @@ class AddFolder extends React.Component {
                 })
             })
     }
-
-    
 
     render() {
         const folderNameError = this.validateFolderName();

@@ -6,10 +6,10 @@ import NotefulContext from '../NotefulContext'
 import './FolderList.css'
 
 class FolderList extends React.Component {
-    static contextType = NotefulContext;
+    static contextType = NotefulContext
 
     render() {
-        const { folders = [] } = this.context;
+        const { folders = [] } = this.context
 
         const folderList = folders.map( folder => 
             <li key={folder.id}>
