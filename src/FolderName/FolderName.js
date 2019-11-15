@@ -1,5 +1,6 @@
 import React from 'react'
 import NotefulContext from '../NotefulContext'
+import PropTypes from 'prop-types'
 import './FolderName.css'
 
 class FolderName extends React.Component {

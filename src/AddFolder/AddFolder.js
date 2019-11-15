@@ -1,6 +1,7 @@
 import React from 'react'
 import ValidationError from '../ValidationError/ValidationError'
 import NotefulContext from '../NotefulContext'
+import PropTypes from 'prop-types'
 import config from '../config'
 import './AddFolder.css'
 

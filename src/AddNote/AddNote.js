@@ -1,6 +1,7 @@
 import React from 'react'
 import NotefulContext from '../NotefulContext'
 import ValidationError from '../ValidationError/ValidationError'
+import PropTypes from 'prop-types'
 import config from '../config'
 import './AddNote.css'
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Note from '../Note/Note'
 import NotefulContext from '../NotefulContext'
+import PropTypes from 'prop-types'
 import './NotePage.css'
 
 class NotePage extends React.Component {
