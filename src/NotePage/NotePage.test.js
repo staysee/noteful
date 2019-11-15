@@ -10,8 +10,7 @@ describe(`NotePage component`, () => {
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
-  //enzyme doesn't yet support React.createContext
-  it.skip('renders a Note with note prop', () => {
+  it('renders a Note with note prop', () => {
     const props = {
       match: {
         params: {

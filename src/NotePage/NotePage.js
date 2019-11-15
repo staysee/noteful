@@ -18,7 +18,7 @@ class NotePage extends React.Component {
     }
 
     render() {
-        const { notes } = this.context;
+        const { notes = [] } = this.context;
         const { noteId } = this.props.match.params;
         const note = notes.find( note => note.id === noteId) || { content: `` };
 

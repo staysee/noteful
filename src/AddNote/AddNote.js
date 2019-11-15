@@ -130,7 +130,7 @@ class AddNote extends React.Component {
     }
 
     render() {
-        const { folders } = this.context;
+        const { folders = [] } = this.context;
         const { noteName, noteContent, noteFolder } = this.state;
         const nameError = this.validateName();
         const contentError = this.validateContent();

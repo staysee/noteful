@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotePage component renders a .NotePage by default 1`] = `
+<div
+  className="NotePage"
+>
+  <Note
+    onDeleteNote={[Function]}
+  />
+  <div
+    className="NotePage__content"
+  />
+</div>
+`;
+
+exports[`NotePage component renders a Note with note prop 1`] = `
+<Note
+  onDeleteNote={[Function]}
+/>
+`;

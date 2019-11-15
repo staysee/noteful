@@ -10,8 +10,7 @@ describe(`Main component`, () => {
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
-  //enzyme doesn't yet suppport React.createContext
-  it.skip('renders a Note in ul for each notes in array', () => {
+  it('renders a Note in ul for each notes in array', () => {
     const props = {
       match: {
         params: {

@@ -25,7 +25,7 @@ describe(`AddNote component`, () => {
     })
 
     //enzyme doesn't support React.createContext
-    it.skip('renders the select options from folders', () => {
+    it('renders the select options from folders', () => {
         const context = { folders: stubFolders }
         const select = shallow(<AddNote />, context)
             .find('#note-folder')

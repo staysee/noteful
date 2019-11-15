@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FolderName component renders a .FolderName by default 1`] = `
+<div
+  className="FolderName"
+>
+  <button
+    className="goBack-button"
+    onClick={[Function]}
+  >
+    Back
+  </button>
+</div>
+`;
+
+exports[`FolderName component renders a h3 with folder name when in props 1`] = `null`;

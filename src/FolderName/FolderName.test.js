@@ -9,8 +9,7 @@ describe(`FolderName component`, () => {
         expect(toJson(wrapper)).toMatchSnapshot()
     })
 
-    //enzyme doesn't support React.createContext
-    it.skip('renders a h3 with folder name when in props', () => {
+    it('renders a h3 with folder name when in props', () => {
         const props = {
             match: {
                 params: {
