@@ -86,17 +86,23 @@ class AddFolder extends React.Component {
                     className="AddFolder__form"
                     onSubmit={this.handleSubmit}
                 >
-                    <label htmlFor="name">Name</label>
-                    <input 
-                        type="text" 
-                        autoComplete="off"
-                        id="name" 
-                        name="name" 
-                        onChange={e => this.setFolderName(e.target.value)} />
-                    {this.state.folderName.touched && ( 
-                        <ValidationError message={folderNameError} /> 
-                    )}
-
+                    <div className="form-group">
+                        <label htmlFor="name">Name</label>
+                        <input 
+                            type="text" 
+                            autoComplete="off"
+                            id="name" 
+                            name="name"
+                            aria-required="true"
+                            aria-describedby="newFolderDescription"
+                            aria-label="Enter New Folder Name" 
+                            onChange={e => this.setFolderName(e.target.value)} />
+                        {this.state.folderName.touched && ( 
+                            <ValidationError message={folderNameError} /> 
+                        )}
+                        <div id="newFolderDescription">Enter a new folder name</div>
+                    </div>
+                    
                     <button 
                         className="AddFolder__cancel-button"
                         onClick={this.handleClickCancel}>

@@ -3,7 +3,6 @@ import NotefulContext from '../NotefulContext'
 import ValidationError from '../ValidationError/ValidationError'
 import PropTypes from 'prop-types'
 import config from '../config'
-import { format } from 'date-fns'
 import './AddNote.css'
 
 class AddNote extends React.Component {
@@ -143,6 +142,9 @@ class AddNote extends React.Component {
                             type="text"
                             id="note-name" 
                             name="note-name" 
+                            aria-required="true"
+                            aria-label="note name"
+                            aria-describedby="noteNameDescription"
                             autoComplete="off" 
                             onChange={e=>this.setNoteName(e.target.value)} />
                         {noteName.touched && (
@@ -156,6 +158,9 @@ class AddNote extends React.Component {
                             type="text" 
                             id="note-content" 
                             name="note-content"
+                            aria-required="true"
+                            aria-label="note content"
+                            aria-describedby="noteContentDescription"
                             autoComplete="off" 
                             onChange={e=>this.setNoteContent(e.target.value)} />
                         {noteContent.touched && (
@@ -167,6 +172,9 @@ class AddNote extends React.Component {
                         <label htmlFor="note-folder">Folder</label>
                         <select 
                             id="note-folder"
+                            aria-required="true"
+                            aria-label="note folder"
+                            aria-describedby="noteFolderDescription"
                             onChange={e=>this.setNoteFolder(e.target.value)}>
                             <option value={null}>...</option>
                             {folders.map( folder => 
@@ -194,6 +202,10 @@ class AddNote extends React.Component {
                         }>
                         Add Note
                     </button>
+
+                    <div id="noteNameDescription">Enter a name for your new note.</div>
+                    <div id="noteContentDescription">Enter the content for your new note.</div>
+                    <div id="noteFolderDescription">Select a folder for your note.</div>
                 </form>
             </div>
         )
