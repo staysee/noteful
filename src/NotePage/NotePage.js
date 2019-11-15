@@ -39,3 +39,7 @@ class NotePage extends React.Component {
 }
 
 export default NotePage
+
+NotePage.propTypes = {
+    match: PropTypes.object
+}

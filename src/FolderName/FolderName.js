@@ -41,3 +41,8 @@ class FolderName extends React.Component {
 }
 
 export default FolderName
+
+FolderName.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object
+}

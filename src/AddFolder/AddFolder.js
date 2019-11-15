@@ -121,3 +121,7 @@ class AddFolder extends React.Component {
 }
 
 export default AddFolder
+
+AddFolder.propTypes = {
+    history: PropTypes.object
+}

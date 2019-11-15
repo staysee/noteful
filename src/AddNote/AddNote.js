@@ -204,3 +204,7 @@ class AddNote extends React.Component {
 }
 
 export default AddNote
+
+AddNote.propTypes = {
+    history: PropTypes.object
+}

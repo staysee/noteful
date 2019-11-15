@@ -63,3 +63,7 @@ class Note extends React.Component {
 }
 
 export default Note
+
+Note.propTypes = {
+    onDelete: PropTypes.func
+}
