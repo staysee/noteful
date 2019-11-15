@@ -1,6 +1,7 @@
 import React from 'react'
 import Note from '../Note/Note'
 import NotefulContext from '../NotefulContext'
+import PropTypes from 'prop-types'
 import './Main.css'
 
 class Main extends React.Component {
@@ -37,3 +38,7 @@ class Main extends React.Component {
 }
 
 export default Main
+
+Main.propTypes = {
+    match: PropTypes.object
+}

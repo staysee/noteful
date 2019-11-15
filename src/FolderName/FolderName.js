@@ -1,5 +1,6 @@
 import React from 'react'
 import NotefulContext from '../NotefulContext'
+import PropTypes from 'prop-types'
 import './FolderName.css'
 
 class FolderName extends React.Component {
@@ -41,3 +42,8 @@ class FolderName extends React.Component {
 }
 
 export default FolderName
+
+FolderName.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object
+}

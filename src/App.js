@@ -7,6 +7,7 @@ import NotePage from './NotePage/NotePage'
 import AddFolder from './AddFolder/AddFolder'
 import AddNote from './AddNote/AddNote'
 import NotefulContext from './NotefulContext'
+import ErrorBoundary from './ErrorBoundary'
 // import DUMMYSTORE from './dummy-store'
 import config from './config'
 import './App.css';
@@ -78,21 +79,25 @@ class App extends React.Component {
 						<h1><Link to='/' className="Header__Link">Noteful</Link></h1>
 					</header>
 
-					<section className="App__navigation">
-						<Route exact path="/" component={FolderList} />
-						<Route exact path="/folder/:folderId" component={FolderList} />
-						<Route path="/note/:noteId" component={FolderName} />
-						<Route path="/add-folder" component={FolderList} />
-						<Route path="/add-note" component={FolderList} />
-					</section>
+					<ErrorBoundary>
+						<section className="App__navigation">
+							<Route exact path="/" component={FolderList} />
+							<Route exact path="/folders/:folderId" component={FolderList} />
+							<Route path="/notes/:noteId" component={FolderName} />
+							<Route path="/add-folder" component={FolderList} />
+							<Route path="/add-note" component={FolderList} />
+						</section>
+					</ErrorBoundary>
 
-					<main className="App__main">
-						<Route exact path="/" component={Main} />
-						<Route exact path="/folder/:folderId" component={Main} />
-						<Route path="/note/:noteId" component={NotePage} />
-						<Route path="/add-folder" component={AddFolder} />
-						<Route path="/add-note" component={AddNote} />
-					</main>
+					<ErrorBoundary>
+						<main className="App__main">
+							<Route exact path="/" component={Main} />
+							<Route exact path="/folders/:folderId" component={Main} />
+							<Route path="/notes/:noteId" component={NotePage} />
+							<Route path="/add-folder" component={AddFolder} />
+							<Route path="/add-note" component={AddNote} />
+						</main>
+					</ErrorBoundary>
 				</div>
 			</NotefulContext.Provider>
 		)
