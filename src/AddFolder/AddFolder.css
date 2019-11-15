@@ -21,21 +21,23 @@
 
 .AddFolder input {
     width: 300px;
+    max-width: 90%;
     height: 40px;
     padding: 8px;
     font-size: 14px;
     margin-bottom: 10px;
+    
 }
 
 .AddFolder button {
-    display: block;
     border-radius: 5px;
     border: 0;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     padding: 10px;
-    margin-top: 10px;   
+    margin-top: 10px;  
+    margin-right:10px; 
     background-color: #1b8179;
     color: #dedede;
     text-decoration: none;

@@ -13,7 +13,7 @@ class FolderList extends React.Component {
 
         const folderList = folders.map( folder => 
             <li key={folder.id}>
-                <NavLink className="FolderList__folder" to={`/folder/${folder.id}`}>
+                <NavLink className="FolderList__folder" to={`/folders/${folder.id}`}>
                     {folder.name}
                 </NavLink>
             </li>
