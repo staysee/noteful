@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import NotefulContext from '../NotefulContext'
 import PropTypes from 'prop-types'
-import { format } from 'date-fns'
 import config from '../config'
 import './Note.css'
 
