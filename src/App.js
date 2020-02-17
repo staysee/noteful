@@ -8,7 +8,7 @@ import AddFolder from './AddFolder/AddFolder'
 import AddNote from './AddNote/AddNote'
 import NotefulContext from './NotefulContext'
 import ErrorBoundary from './ErrorBoundary'
-// import DUMMYSTORE from './dummy-store'
+import DUMMYSTORE from './dummy-store'
 import config from './config'
 import './App.css';
 

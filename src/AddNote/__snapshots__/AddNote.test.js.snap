@@ -20,6 +20,9 @@ exports[`AddNote component renders the complete form 1`] = `
         Name
       </label>
       <input
+        aria-describedby="noteNameDescription"
+        aria-label="note name"
+        aria-required="true"
         autoComplete="off"
         id="note-name"
         name="note-name"
@@ -36,6 +39,9 @@ exports[`AddNote component renders the complete form 1`] = `
         Content
       </label>
       <input
+        aria-describedby="noteContentDescription"
+        aria-label="note content"
+        aria-required="true"
         autoComplete="off"
         id="note-content"
         name="note-content"
@@ -52,6 +58,9 @@ exports[`AddNote component renders the complete form 1`] = `
         Folder
       </label>
       <select
+        aria-describedby="noteFolderDescription"
+        aria-label="note folder"
+        aria-required="true"
         id="note-folder"
         onChange={[Function]}
       >
@@ -75,12 +84,30 @@ exports[`AddNote component renders the complete form 1`] = `
     >
       Add Note
     </button>
+    <div
+      id="noteNameDescription"
+    >
+      Enter a name for your new note.
+    </div>
+    <div
+      id="noteContentDescription"
+    >
+      Enter the content for your new note.
+    </div>
+    <div
+      id="noteFolderDescription"
+    >
+      Select a folder for your note.
+    </div>
   </form>
 </div>
 `;
 
 exports[`AddNote component renders the select options from folders 1`] = `
 <select
+  aria-describedby="noteFolderDescription"
+  aria-label="note folder"
+  aria-required="true"
   id="note-folder"
   onChange={[Function]}
 >

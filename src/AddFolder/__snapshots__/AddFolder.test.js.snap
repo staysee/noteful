@@ -11,18 +11,30 @@ exports[`Add Folder component renders the complete form 1`] = `
     className="AddFolder__form"
     onSubmit={[Function]}
   >
-    <label
-      htmlFor="name"
+    <div
+      className="form-group"
     >
-      Name
-    </label>
-    <input
-      autoComplete="off"
-      id="name"
-      name="name"
-      onChange={[Function]}
-      type="text"
-    />
+      <label
+        htmlFor="name"
+      >
+        Name
+      </label>
+      <input
+        aria-describedby="newFolderDescription"
+        aria-label="Enter New Folder Name"
+        aria-required="true"
+        autoComplete="off"
+        id="name"
+        name="name"
+        onChange={[Function]}
+        type="text"
+      />
+      <div
+        id="newFolderDescription"
+      >
+        Enter a new folder name
+      </div>
+    </div>
     <button
       className="AddFolder__cancel-button"
       onClick={[Function]}

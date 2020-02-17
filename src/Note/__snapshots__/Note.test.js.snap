@@ -14,7 +14,8 @@ exports[`Note component renders a .Note by default 1`] = `
   <div
     className="Note__date"
   >
-    Modified on 
+    Modified 
+    Invalid Date
   </div>
   <button
     className="Note__delete"
@@ -41,8 +42,8 @@ exports[`Note component renders the Note given props 1`] = `
   <div
     className="Note__date"
   >
-    Modified on 
-    <Component />
+    Modified 
+    1/15/2019
   </div>
   <button
     className="Note__delete"
