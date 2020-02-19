@@ -24,10 +24,9 @@ class Note extends React.Component {
             }
         })
         .then(res => {
-            if (!res.ok){
+            if (!res.ok)
                 return res.json().then(error => Promise.reject(error))
-            }
-             return res.json()
+            // return res.json()
         })
         .then( () => {
             this.context.deleteNote(noteId)

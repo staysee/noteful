@@ -86,7 +86,7 @@ class AddNote extends React.Component {
         const newNote = {
             name: noteName.name,
             content: noteContent.content,
-            folderId: noteFolder.folderId,
+            folder_id: noteFolder.folderId,
             modified: new Date()
         }
 
