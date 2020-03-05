@@ -20,7 +20,7 @@ class Main extends React.Component {
             if (!folderId) {
                 notesInFolder = notes
             } else {
-                notesInFolder = notes.filter (note => note.folderId === Number(folderId))
+                notesInFolder = notes.filter (note => note.folder_id === Number(folderId))
             }
 
         return(
